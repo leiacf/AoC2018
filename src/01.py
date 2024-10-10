@@ -25,7 +25,35 @@ def parse(data):
 
     return total
 
+
+def parse_and_check(data):
+
+    total = 0
+    seen = []
+
+    while True:
+
+        for line in data:
+
+            line = line.strip()
+
+            operand = line[:1]
+            number = int(line[1:])
+
+            if operand == "+":
+                total += number
+            elif operand == "-":
+                total -= number
+
+            if total not in seen:
+                seen.append(total)
+            else:
+                return total
+
 # Part 1
 
 print("The total is: ", parse(data))
 
+# Part 2
+
+print("The total is: ", parse_and_check(data))
