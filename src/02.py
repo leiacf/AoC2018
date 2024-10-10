@@ -33,6 +33,29 @@ def has_three(line):
 
     return False
 
+def compare(data):
+
+    entries = []
+
+    for line in data:
+        for entry in entries:
+            
+            if len(line) == len(entry):
+
+                differs = 0
+                index = -1
+
+                for x in range(0, len(line)):
+
+                    if line[x] != entry[x]:
+                        differs += 1
+                        index = x
+
+                if (differs == 1):
+                    return "" + line[:index] + line[index+1:]
+
+        entries.append(line) 
+
 # Part 1
 
 two = 0
@@ -45,3 +68,8 @@ for line in data:
         three += 1
 
 print("The checksum is", two*three)
+
+# Part 2
+
+result = compare(data)
+print("The answer is: " + result)
