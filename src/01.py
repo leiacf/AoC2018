@@ -6,25 +6,14 @@ with open(file, "r") as f:
     data = f.readlines()
     f.close()
 
-
 def parse(data):
 
     total = 0
 
     for line in data:
-
-        line = line.strip()
-
-        operand = line[:1]
-        number = int(line[1:])
-
-        if operand == "+":
-            total += number
-        elif operand == "-":
-            total -= number
+        total += int(line.strip())
 
     return total
-
 
 def parse_and_check(data):
 
@@ -34,16 +23,7 @@ def parse_and_check(data):
     while True:
 
         for line in data:
-
-            line = line.strip()
-
-            operand = line[:1]
-            number = int(line[1:])
-
-            if operand == "+":
-                total += number
-            elif operand == "-":
-                total -= number
+            total += int(line.strip())
 
             if total not in seen:
                 seen.append(total)
