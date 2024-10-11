@@ -59,6 +59,32 @@ def calculate(coords):
 
     return total
 
+def overlap(data, coords):
+
+    for entry in data:
+
+        claim = entry[0]
+
+        xmin = int(entry[1])
+        xmax = int(entry[3])
+        ymin = int(entry[2])
+        ymax = int(entry[4])
+
+        size = xmax*ymax
+        count = 0
+
+        for x in range (xmin, xmin+xmax):
+            for y in range (ymin, ymin+ymax):
+
+                coord = (x,y)
+
+                if (coords[coord] == 1):
+                    count += 1
+
+        if count == size:
+            return claim
+        
+    return "Not found"
 
 # Part 1
 
@@ -66,3 +92,12 @@ data = parse(raw)
 coords = fill(data)
 
 print("The number of square inches within two or more claims are", calculate(coords))
+
+
+# Part 2
+
+data = parse(raw)
+coords = fill(data)
+
+print("The claim that doesn't overlap is", overlap(data, coords))
+
