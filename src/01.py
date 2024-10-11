@@ -18,7 +18,7 @@ def parse(data):
 def parse_and_check(data):
 
     total = 0
-    seen = []
+    seen = set()
 
     while True:
 
@@ -26,7 +26,7 @@ def parse_and_check(data):
             total += int(line.strip())
 
             if total not in seen:
-                seen.append(total)
+                seen.add(total)
             else:
                 return total
 
